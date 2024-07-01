@@ -7,9 +7,12 @@ require "jquery/rails"
 
 module Refile
   class TestApp < Rails::Application
-    config.middleware.delete "ActionDispatch::Cookies"
-    config.middleware.delete "ActionDispatch::Session::CookieStore"
-    config.middleware.delete "ActionDispatch::Flash"
+    if Rails::VERSION::MAJOR < 7
+      config.middleware.delete "ActionDispatch::Cookies"
+      config.middleware.delete "ActionDispatch::Session::CookieStore"
+      config.middleware.delete "ActionDispatch::Flash"
+    end
+
     config.active_support.deprecation = :log
     config.eager_load = false
     config.action_dispatch.show_exceptions = false
