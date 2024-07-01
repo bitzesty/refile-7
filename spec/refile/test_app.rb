@@ -4,6 +4,7 @@ require "rails/all"
 require "refile"
 require "refile/rails"
 require "jquery/rails"
+require "sprockets/railtie" if Rails::VERSION::MAJOR >= 7
 
 module Refile
   class TestApp < Rails::Application
